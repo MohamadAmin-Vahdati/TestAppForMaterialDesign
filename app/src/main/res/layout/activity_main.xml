@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerlayout"
+    android:layoutDirection="ltr">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="#E9E9E9"
+        android:id="@+id/layoutParent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:id="@+id/toolbar"
+            app:title="Music Library"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:id="@+id/recycler_view"
+            android:layout_above="@id/bottom_navigation"
+            android:layout_below="@id/toolbar"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"/>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/coordinatorLayout"
+            android:visibility="gone"
+            >
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/Appbar"
+                style="@style/Widget.MaterialComponents.AppBarLayout.Primary">
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_scrollFlags="scroll"
+                    android:id="@+id/CollapsingToolbar"
+                    app:contentScrim="?attr/colorPrimary"
+                    >
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="17dp">
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="32dp"
+                            android:textStyle="bold"
+                            android:id="@+id/AlbumNameAbout"
+                            android:textDirection="rtl"
+                            android:layout_alignParentRight="true"
+                            android:layout_toRightOf="@id/btn_back"/>
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_back_black_24dp"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/btn_back"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#D9000000"
+                        android:textSize="24dp"
+                        android:textDirection="rtl"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="8dp"
+                        android:id="@+id/NumOfSongAbout"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:id="@+id/AlbumAbout"
+                        android:textDirection="rtl"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp" />
+
+                </LinearLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/bottom_navigation_menu"
+            style="@style/Widget.MaterialComponents.BottomNavigationView" />
+
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|left"
+        app:menu="@menu/navigation_drawer_menu"
+        app:headerLayout="@layout/nav_head"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
